@@ -46,21 +46,10 @@ const GET_LANGUAGES = gql`
 `;
 
 export default function Home() {
-  const {
-    loading,
-    error,
-    data: { continents } = { continents: [] },
-  } = useQuery(GET_CONTINENTS);
-  const {
-    loading: countriesLoading,
-    error: countriesError,
-    data: { countries } = { countries: [] },
-  } = useQuery(GET_COUNTRIES);
-  const {
-    loading: languagesLoading,
-    error: languagesError,
-    data: { languages } = { languages: [] },
-  } = useQuery(GET_LANGUAGES);
+  const { data: { continents } = { continents: [] } } =
+    useQuery(GET_CONTINENTS);
+  const { data: { countries } = { countries: [] } } = useQuery(GET_COUNTRIES);
+  const { data: { languages } = { languages: [] } } = useQuery(GET_LANGUAGES);
 
   const gadgets = useMemo(() => {
     return [
@@ -83,13 +72,6 @@ export default function Home() {
       },
     ];
   }, [countries, continents, languages]);
-
-  if (
-    (loading && !error) ||
-    (countriesLoading && !countriesError) ||
-    (languagesLoading && !languagesError)
-  )
-    return <Skeleton variant="rounded" width={210} height={60} />;
 
   return (
     <Box>
@@ -116,25 +98,6 @@ export default function Home() {
   );
 }
 
-export const breadcrumbs = [
-  {
-    title: "Homepage",
-    render: (props: any) => (
-      <Link {...props} underline="hover" color="inherit" href="/">
-        {props.title}
-      </Link>
-    ),
-  },
-  {
-    title: "Countries",
-    render: (props: any) => (
-      <Typography {...props} underline="hover" color="inherit" href="/">
-        {props.title}
-      </Typography>
-    ),
-  },
-];
-
 Home.getLayout = function getLayout(page: any) {
-  return <MainLayout breadcrumbs={breadcrumbs}>{page}</MainLayout>;
+  return <MainLayout title={"Countries"}>{page}</MainLayout>;
 };

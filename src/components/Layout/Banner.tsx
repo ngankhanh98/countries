@@ -4,21 +4,13 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/system";
 import * as React from "react";
 
-interface BannerProps {
-  breadcrumbs: Array<{ title: string; render: Function }>;
-}
-
-function Banner(props: BannerProps) {
+function Banner(props: any) {
+  console.log('props', props)
   return (
     <BannerContainer>
       <Box width={"60%"}>
-        <Breadcrumbs aria-label="breadcrumb" sx={{ paddingBottom: 2 }}>
-          {props.breadcrumbs.map((b: any, index: number) =>
-            b.render({ key: index, title: b.title })
-          )}
-        </Breadcrumbs>
         <Typography variant="h1">
-          {props.breadcrumbs[props.breadcrumbs.length - 1]?.title}
+          {props.title}
         </Typography>
       </Box>
     </BannerContainer>
@@ -33,7 +25,7 @@ export const BannerContainer = styled(Box)({
   backgroundColor: "#e2e5f0",
   display: "grid",
   placeItems: "center",
-  paddingTop: 36,
+  paddingTop: 60,
   paddingBottom: 60,
 });
 

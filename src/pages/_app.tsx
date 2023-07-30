@@ -2,7 +2,7 @@ import { MainLayout } from "@/components";
 
 import "@/styles/globals.css";
 import { Container } from "@mui/material";
-import { green, grey } from "@mui/material/colors";
+import { green, grey, red } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -60,15 +60,18 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: ({ ownerState }) => ({
+          borderRadius: "39px",
+          paddingLeft: "1.375rem",
+          paddingRight: "1.375rem",
           ...(ownerState.variant === "contained" && {
-            backgroundColor: green[500],
-            color: green[50],
+            backgroundColor: "#c83c87",
+            color: "white",
           }),
           ...(ownerState.variant === "outlined" && {
-            borderColor: green[50],
-            color: green[50],
+            borderColor: "#c83c87",
+            color: "#c83c87",
             "&:hover": {
-              color: green[500],
+              color: "#c83c87",
             },
           }),
         }),
@@ -110,6 +113,13 @@ const theme = createTheme({
               : "underline",
           },
         }),
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: `${red[600]} !important`,
+        },
       },
     },
   },

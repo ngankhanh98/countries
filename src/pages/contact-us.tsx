@@ -1,12 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { MainLayout } from "@/components";
+import ContactForm from "@/components/ContactForm";
+import { Box, Container } from "@mui/material";
 
-function ContactUs(props: any) {
+export default function ContactUs(props: any) {
   return (
-    <div>ContactUs</div>
-  )
+    <Box sx={{ background: "#F3F6F8" }} paddingY={4}>
+      <Container>
+        <ContactForm></ContactForm>
+      </Container>
+    </Box>
+  );
 }
 
-ContactUs.propTypes = {}
+ContactUs.getInitialProps = async (ctx: any) => {
+  return { query: ctx.query };
+};
 
-export default ContactUs
+ContactUs.getLayout = function getLayout(page: any) {
+  const { query } = page.props;
+  return <MainLayout title="Contact Us">{page}</MainLayout>;
+};
