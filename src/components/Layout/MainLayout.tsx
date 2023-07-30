@@ -6,7 +6,7 @@ import Banner from "./Banner";
 const headers = [
   {
     title: "Home",
-    url: "/",
+    url: "/countries",
   },
   {
     title: "Contact Us",

@@ -47,7 +47,7 @@ export const breadcrumbs = (code = "", name = "") => [
   {
     title: "Homepage",
     render: (props: any) => (
-      <Link {...props} underline="hover" color="inherit" href="/">
+      <Link {...props} underline="hover" color="inherit" href="/countries">
         {props.title}
       </Link>
     ),
@@ -55,7 +55,12 @@ export const breadcrumbs = (code = "", name = "") => [
   {
     title: name,
     render: (props: any) => (
-      <Typography {...props} underline="hover" color="inherit" href="/">
+      <Typography
+        {...props}
+        underline="hover"
+        color="inherit"
+        href="/countries"
+      >
         {props.title}
       </Typography>
     ),
@@ -63,7 +68,7 @@ export const breadcrumbs = (code = "", name = "") => [
 ];
 
 CountryPage.getLayout = function getLayout(page: any) {
-  console.log('page', page)
+  console.log("page", page);
   const { query } = page.props;
   return <MainLayout title={query["country"]}>{page}</MainLayout>;
 };
