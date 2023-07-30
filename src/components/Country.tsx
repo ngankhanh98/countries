@@ -24,7 +24,7 @@ function Country(props: CountryProps) {
       </Box>
       <Link
         variant="body2"
-        href={props.code + "?country=" + props.name}
+        href={"/countries/" + props.code + "?country=" + props.name}
         sx={{ textDecoration: "none" }}
       >
         {props.name}
