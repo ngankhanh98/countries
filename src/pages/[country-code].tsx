@@ -63,6 +63,7 @@ export const breadcrumbs = (code = "", name = "") => [
 ];
 
 CountryPage.getLayout = function getLayout(page: any) {
+  console.log('page', page)
   const { query } = page.props;
   return <MainLayout title={query["country"]}>{page}</MainLayout>;
 };
