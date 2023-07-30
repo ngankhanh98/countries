@@ -20,7 +20,7 @@ export default function Header(props: HeaderProps) {
   return (
     <Box paddingX={20}>
       <Toolbar sx={{ height: 80 }}>
-        <Image src={"/logo.png"} width={30} height={30} alt="logo"></Image>
+        <Image src={"logo.png"} width={30} height={30} alt="logo"></Image>
         <Typography
           component="h2"
           variant="h5"

@@ -126,7 +126,7 @@ const theme = createTheme({
 });
 
 const client = new ApolloClient({
-  uri: process.env.NEXT_URI,
+  uri: process.env.NEXT_PUBLIC_URI,
   cache: new InMemoryCache(),
 });
 

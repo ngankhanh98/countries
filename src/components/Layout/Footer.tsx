@@ -7,7 +7,7 @@ function Footer(props: any) {
   return (
     <Box paddingX={20} sx={{ background: "#e2e5f0" }}>
       <Toolbar sx={{ height: 80 }}>
-        <Image src={"/logo.png"} width={30} height={30} alt="logo"></Image>
+        <Image src={"logo.png"} width={30} height={30} alt="logo"></Image>
         <Typography
           component="h2"
           variant="h5"
