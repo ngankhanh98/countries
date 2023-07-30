@@ -8,6 +8,7 @@ import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { Rubik } from "next/font/google";
 import { ReactElement, ReactNode } from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -114,6 +115,12 @@ const theme = createTheme({
   },
 });
 
+const client = new ApolloClient({
+  // uri: process.env.NEXT_URI,
+  uri: "https://countries.trevorblades.com",
+  cache: new InMemoryCache(),
+});
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -126,8 +133,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
   return (
-    <ThemeProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
