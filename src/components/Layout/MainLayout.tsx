@@ -10,7 +10,7 @@ const headers = [
   },
   {
     title: "Contact Us",
-    url: "/contact-us",
+    url: "contact-us",
   },
 ];
 
