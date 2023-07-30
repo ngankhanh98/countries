@@ -126,8 +126,7 @@ const theme = createTheme({
 });
 
 const client = new ApolloClient({
-  // uri: process.env.NEXT_URI,
-  uri: "https://countries.trevorblades.com",
+  uri: process.env.NEXT_URI,
   cache: new InMemoryCache(),
 });
 
